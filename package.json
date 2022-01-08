@@ -4,8 +4,6 @@
     "start": "nodemon src/index.js"
   },
   "dependencies": {
-    "@google-cloud/bigquery": "^5.9.3",
-    "express": "^4.17.2",
-    "nodemon": "^2.0.15"
+    "@google-cloud/bigquery": "^5.9.3"
   }
 }
