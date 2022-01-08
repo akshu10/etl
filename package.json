@@ -1,9 +1,0 @@
-{
-  "type": "module",
-  "scripts": {
-    "start": "nodemon src/index.js"
-  },
-  "dependencies": {
-    "@google-cloud/bigquery": "^5.9.3"
-  }
-}
