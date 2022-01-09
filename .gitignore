@@ -2,6 +2,8 @@ dist
 dist.zip
 node_modules
 
+*.jsonl
+
 .DS_Store
 .idea/
 
