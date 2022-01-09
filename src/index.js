@@ -1,5 +1,4 @@
 import { BigQuery } from "@google-cloud/bigquery";
-import fs from "fs";
 /**
  * This function helps to create a DataSet on BigQuery.
  */
@@ -57,25 +56,12 @@ async function loadJSON(datasetId, tableId) {
   const rows = [
     { name: "Toronto", state: "ON" },
     { name: "Halifax", state: "NS" },
+    { name: "Sydney", state: "NS" },
   ];
 
   // Insert data into a table
   await bigqueryClient.dataset(datasetId).table(tableId).insert(rows);
   console.log(`Inserted ${rows.length} rows`);
-}
-
-function createJSONFile(fileName, data) {
-  console.log("FileName", fileName);
-  console.log("Data", data);
-
-  try {
-    for (const value of data) {
-      fs.appendFileSync(fileName, JSON.stringify(value));
-      fs.appendFileSync(fileName, "\n");
-    }
-  } catch (error) {
-    console.error(error);
-  }
 }
 
 function main() {
@@ -100,7 +86,7 @@ function main() {
     },
   ];
 
-  //   createDataset();
+  createDataset();
   // const file = createJSONFile("sample-data.jsonl", data);
   //   createTable("Cities", "my_states_dataset3", file);
   loadJSON("my_states_dataset3", "Cities");
