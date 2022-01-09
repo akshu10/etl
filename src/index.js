@@ -49,30 +49,19 @@ async function createTable(tableId, datasetId) {
  */
 
 async function loadJSON(datasetId, tableId) {
-  if (!data) {
-    console.log("Data is undefined");
-  }
-
   // Instantiate clients
   const bigqueryClient = new BigQuery();
 
-  // Configure Load Job
-  const metaData = {
-    sourceFormat: "NEWLINE_DELIMITED_JSON",
-    schema: {
-      fields: [
-        { name: "name", type: "STRING", mode: "NULLABLE" },
-        { name: "province", type: "STRING", mode: "NULLABLE" },
-      ],
-    },
-    location: "US",
-  };
+  // Inserts the JSON objects into my_dataset:my_table.
 
-  // Load JOB
-  const [job] = await bigqueryClient
-    .dataset(datasetId)
-    .table(tableId)
-    .load(file("sample-data.json"), metaData);
+  const rows = [
+    { name: "Toronto", state: "ON" },
+    { name: "Halifax", state: "NS" },
+  ];
+
+  // Insert data into a table
+  await bigqueryClient.dataset(datasetId).table(tableId).insert(rows);
+  console.log(`Inserted ${rows.length} rows`);
 }
 
 function createJSONFile(fileName, data) {
@@ -112,8 +101,9 @@ function main() {
   ];
 
   //   createDataset();
-  const file = createJSONFile("sample-data.jsonl", data);
+  // const file = createJSONFile("sample-data.jsonl", data);
   //   createTable("Cities", "my_states_dataset3", file);
+  loadJSON("my_states_dataset3", "Cities");
 }
 
 main();
