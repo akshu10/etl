@@ -1,0 +1,25 @@
+{
+  "name": "etl",
+  "version": "1.0.0",
+  "description": "POC ",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshu10/etl.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akshu10/etl/issues"
+  },
+  "homepage": "https://github.com/akshu10/etl#readme",
+  "dependencies": {
+    "@google-cloud/bigquery": "^5.9.3",
+    "@google-cloud/storage": "^5.16.1"
+  }
+}
